@@ -1,18 +1,33 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
+import { serverUrl } from "./config";
 
 function LoginForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isLogin, setIsLogin] = useState(true);
-  const [users, setUsers] = useState([]);
+  const [users] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/users")
-      .then((res) => res.json())
-      .then((data) => setUsers(data))
-      .catch((err) => console.error(err));
-  }, []);
+    const login = async () => {
+      const response = await fetch(`${serverUrl}/auth/login`, {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password }),
+      });
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data);
+      } else {
+        console.log("Felaktiga uppgifter");
+      }
+    };
+
+    login();
+  }, [username, password]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
