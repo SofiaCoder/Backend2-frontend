@@ -6,7 +6,7 @@ function LoginForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isLogin, setIsLogin] = useState(true);
-  const [users] = useState([]);
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
     const login = async () => {
