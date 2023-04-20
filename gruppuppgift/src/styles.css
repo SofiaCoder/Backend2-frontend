@@ -1,0 +1,118 @@
+/* Stilmall för flödessida */
+
+/* Grundläggande stil för sidan */
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+}
+
+/* Stil för sidhuvud */
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+}
+
+header h1 {
+  margin: 0;
+}
+
+header ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+header ul li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+header ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Stil för huvudinnehåll */
+main {
+  padding: 20px;
+}
+
+/* Stil för postformulär */
+#post-form label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+#post-text {
+  width: 100%;
+  height: 100px;
+}
+
+#post-form input[type="submit"] {
+  display: block;
+  margin-top: 10px;
+}
+
+/* Stil för sökformulär */
+#search-friends label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+#search-friends input[type="text"] {
+  width: 100%;
+}
+
+#search-friends input[type="submit"] {
+  display: block;
+  margin-top: 10px;
+}
+
+/* Stil för vänlista */
+#search-friends ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#search-friends ul li {
+  margin-bottom: 10px;
+}
+
+#search-friends ul li a {
+  color: #333;
+  text-decoration: none;
+}
+
+/* Stil för postlista */
+#post-list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.post {
+  background-color: #f7f7f7;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.post-text {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.post-author {
+  font-style: italic;
+  margin-bottom: 5px;
+}
+
+.post-date {
+  font-size: 0.8rem;
+  color: #888;
+}
