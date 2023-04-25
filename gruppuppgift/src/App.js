@@ -9,33 +9,61 @@ function LoginForm() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    const login = async () => {
-      const response = await fetch(`${serverUrl}/auth/login`, {
-        method: "POST",
+    const fetchUsers = async () => {
+      const response = await fetch(`${serverUrl}/users`, {
         credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, password }),
       });
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
+        setUsers(data);
       } else {
-        console.log("Felaktiga uppgifter");
+        console.log("Kunde inte hämta användare");
       }
     };
 
-    login();
-  }, [username, password]);
+    fetchUsers();
+  }, []);
+
+  const handleLogin = async () => {
+    const response = await fetch(`${serverUrl}/auth/login`, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username, password }),
+    });
+    if (response.ok) {
+      const data = await response.json();
+      console.log(data);
+    } else {
+      console.log("Felaktiga uppgifter");
+    }
+  };
+
+  const handleRegister = async () => {
+    const response = await fetch(`${serverUrl}/auth/register`, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username, password }),
+    });
+    if (response.ok) {
+      const data = await response.json();
+      console.log(data);
+    } else {
+      console.log("Kunde inte skapa användare");
+    }
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const user = users.find((u) => u.username === username);
-    if (user && user.password === password) {
-      // Användaren är inloggad
+    if (isLogin) {
+      handleLogin();
     } else {
-      // Felaktiga uppgifter
+      handleRegister();
     }
   };
 
