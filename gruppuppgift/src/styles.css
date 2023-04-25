@@ -1,118 +1,56 @@
-/* Stilmall för flödessida */
-
-/* Grundläggande stil för sidan */
-body {
-  font-family: Arial, sans-serif;
-  font-size: 16px;
-  line-height: 1.5;
-  margin: 0;
-  padding: 0;
-}
-
-/* Stil för sidhuvud */
-header {
-  background-color: #333;
-  color: #fff;
+.container {
+  max-width: 800px;
+  margin: 0 auto;
   padding: 20px;
+  box-sizing: border-box;
 }
 
-header h1 {
-  margin: 0;
-}
-
-header ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-header ul li {
-  display: inline-block;
-  margin-right: 20px;
-}
-
-header ul li a {
-  color: #fff;
-  text-decoration: none;
-}
-
-/* Stil för huvudinnehåll */
-main {
-  padding: 20px;
-}
-
-/* Stil för postformulär */
-#post-form label {
-  display: block;
-  margin-bottom: 10px;
-}
-
-#post-text {
-  width: 100%;
-  height: 100px;
-}
-
-#post-form input[type="submit"] {
-  display: block;
-  margin-top: 10px;
-}
-
-/* Stil för sökformulär */
-#search-friends label {
-  display: block;
-  margin-bottom: 10px;
-}
-
-#search-friends input[type="text"] {
-  width: 100%;
-}
-
-#search-friends input[type="submit"] {
-  display: block;
-  margin-top: 10px;
-}
-
-/* Stil för vänlista */
-#search-friends ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-#search-friends ul li {
-  margin-bottom: 10px;
-}
-
-#search-friends ul li a {
-  color: #333;
-  text-decoration: none;
-}
-
-/* Stil för postlista */
-#post-list ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.post {
-  background-color: #f7f7f7;
-  border: 1px solid #ccc;
+h1 {
+  font-size: 32px;
   margin-bottom: 20px;
-  padding: 10px;
 }
 
-.post-text {
-  font-size: 1.2rem;
-  margin-bottom: 10px;
+.search-form {
+  margin-bottom: 20px;
 }
 
-.post-author {
-  font-style: italic;
-  margin-bottom: 5px;
+label {
+  font-size: 16px;
+  font-weight: bold;
+  margin-right: 10px;
 }
 
-.post-date {
-  font-size: 0.8rem;
-  color: #888;
+.search-container {
+  display: flex;
+  align-items: center;
+}
+
+#search-input {
+  flex-grow: 1;
+  height: 40px;
+  padding: 5px;
+  font-size: 16px;
+  border-radius: 5px 0 0 5px;
+  border: 1px solid #ccc;
+}
+
+button[type="submit"] {
+  height: 40px;
+  padding: 0 20px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+button[type="submit"]:hover {
+  background-color: #0069d9;
+}
+
+p {
+  color: #dc3545;
 }
