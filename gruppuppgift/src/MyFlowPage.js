@@ -7,36 +7,36 @@ function MyFlowPage() {
   const [users, setUsers] = useState([]);
   const [error, setError] = useState(null);
   const [postText, setPostText] = useState("");
-  const [loggedInUser, setLoggedInUser] = useState(null);
+
   const [userPosts, setUserPosts] = useState([]);
   const [username, setUsername] = useState("");
   const [searchedUser, setSearchedUser] = useState(null);
 
   useEffect(() => {
-    async function fetchUserData() {
+    const fetchUserPosts = async () => {
       try {
-        const response = await fetch(`${serverUrl}/me`, {
+        const response = await fetch(`${serverUrl}/post`, {
+          method: "GET",
           credentials: "include",
         });
         if (response.ok) {
           const data = await response.json();
-          setLoggedInUser(data.user);
-          setError(null);
+          setUserPosts(data.posts);
         } else {
           setError("Något gick fel. Försök igen senare.");
         }
       } catch (error) {
         setError("Något gick fel. Försök igen senare.");
       }
-    }
-    fetchUserData();
+    };
+    fetchUserPosts();
   }, []);
 
   const handleSearch = async (event) => {
     event.preventDefault();
     try {
       const response = await fetch(`${serverUrl}/user`, {
-        method: "POST",
+        method: "GET",
         credentials: "include",
         body: JSON.stringify({ username: username }),
         headers: {
@@ -72,7 +72,8 @@ function MyFlowPage() {
       if (response.ok) {
         setPostText("");
         const data = await response.json();
-        alert(`Tack ${loggedInUser.username}! Ditt inlägg är postat.`);
+        alert(`Tack ${username}! Ditt inlägg är postat.`);
+        setUserPosts([...userPosts, data.post]);
       } else {
         setError("Något gick fel. Försök igen senare.");
       }

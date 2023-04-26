@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { serverUrl } from "./config";
 import { useNavigate } from "react-router-dom";
 
-function LoginForm({ onLogin }) {
+function LoginForm({ onLogin, setLoggedInUser }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isLogin, setIsLogin] = useState(true);
@@ -22,6 +22,7 @@ function LoginForm({ onLogin }) {
       const data = await response.json();
       console.log(data);
       onLogin(); // Set isLoggedIn to true in the parent component
+      setLoggedInUser(data.username); // Set loggedInUser to the username returned from the server
       navigate("/myflowpage"); // Navigate to MyFlowpage after successful login
     } else {
       setErrorMessage("Felaktiga uppgifter");
@@ -41,6 +42,7 @@ function LoginForm({ onLogin }) {
       const data = await response.json();
       console.log(data);
       onLogin(); // Set isLoggedIn to true in the parent component
+      setLoggedInUser(data.username); // Set loggedInUser to the username returned from the server
       navigate("/myflowpage"); // Navigate to MyFlowpage after successful login
     } else {
       setErrorMessage("Kunde inte skapa användare");
