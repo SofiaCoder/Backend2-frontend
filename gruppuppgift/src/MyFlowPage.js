@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { serverUrl } from "./config";
-
 import "./styles.css";
 
 function MyFlowPage() {
@@ -9,16 +8,45 @@ function MyFlowPage() {
   const [error, setError] = useState(null);
   const [postText, setPostText] = useState("");
   const [loggedInUser, setLoggedInUser] = useState(null);
+  const [userPosts, setUserPosts] = useState([]);
+  const [username, setUsername] = useState("");
+  const [searchedUser, setSearchedUser] = useState(null);
+
+  useEffect(() => {
+    async function fetchUserData() {
+      try {
+        const response = await fetch(`${serverUrl}/me`, {
+          credentials: "include",
+        });
+        if (response.ok) {
+          const data = await response.json();
+          setLoggedInUser(data.user);
+          setError(null);
+        } else {
+          setError("Något gick fel. Försök igen senare.");
+        }
+      } catch (error) {
+        setError("Något gick fel. Försök igen senare.");
+      }
+    }
+    fetchUserData();
+  }, []);
 
   const handleSearch = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch(`${serverUrl}/users?search=${searchTerm}`, {
+      const response = await fetch(`${serverUrl}/user`, {
+        method: "POST",
         credentials: "include",
+        body: JSON.stringify({ username: username }),
+        headers: {
+          "Content-Type": "application/json",
+        },
       });
       if (response.ok) {
         const data = await response.json();
-        setUsers(data.users);
+        setSearchedUser(data.user);
+        setUserPosts(data.user.posts);
         setError(null);
       } else {
         setUsers([]);
@@ -28,10 +56,6 @@ function MyFlowPage() {
       setUsers([]);
       setError("Något gick fel. Försök igen senare.");
     }
-  };
-
-  const handleChange = (event) => {
-    setSearchTerm(event.target.value);
   };
 
   const handlePostSubmit = async (event) => {
@@ -70,30 +94,33 @@ function MyFlowPage() {
           <input
             type="text"
             id="search-input"
-            value={searchTerm}
-            onChange={handleChange}
+            value={username}
+            onChange={(event) => setUsername(event.target.value)}
           />
           <button type="submit">Sök</button>
         </div>
       </form>
       {error && <p>{error}</p>}
-      {users.length > 0 && (
-        <ul>
-          {users.map((user) => (
-            <li key={user.id}>{user.username}</li>
+      {searchedUser && (
+        <div className="searched-user">
+          <h2>{searchedUser.username}</h2>
+          <p>{searchedUser.bio}</p>
+          <h3>Inlägg</h3>
+          {userPosts.map((post) => (
+            <p key={post._id}>{post.text}</p>
           ))}
-        </ul>
+        </div>
       )}
       <form className="post-form" onSubmit={handlePostSubmit}>
-        <label htmlFor="post-textarea">
-          Hej {loggedInUser?.username ?? "anonym"}! Berätta vad som händer:
-        </label>
-        <textarea
-          id="post-textarea"
-          value={postText}
-          onChange={handlePostTextChange}
-        />
-        <button type="submit">Posta inlägg</button>
+        <label htmlFor="post-input">Skriv ett inlägg:</label>
+        <div className="post-container">
+          <textarea
+            id="post-input"
+            value={postText}
+            onChange={handlePostTextChange}
+          />
+          <button type="submit">Posta</button>
+        </div>
       </form>
     </div>
   );
