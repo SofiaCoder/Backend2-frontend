@@ -2,7 +2,6 @@ import { likePost } from "./likePost";
 import "./reactionManager.css";
 
 export function ReactionManager({post, posts, setPosts}) {
-  console.log(posts);
   const loggedinUser = localStorage.getItem('loggedinUser');
   const likes = post.likes;
 
@@ -15,7 +14,16 @@ export function ReactionManager({post, posts, setPosts}) {
     const indexOfPost = posts.findIndex((element) => element._id === post._id);
 
     const clonedPosts = structuredClone(posts);
-    clonedPosts[indexOfPost].likes.push(loggedinUser);
+    const likes = clonedPosts[indexOfPost].likes;
+
+    const likeIndex = likes.indexOf(loggedinUser);
+
+    if (likeIndex === -1) {
+      likes.push(loggedinUser);
+    } else {
+      likes.splice(likeIndex, 1);
+    }
+
     setPosts(clonedPosts);
   }
 

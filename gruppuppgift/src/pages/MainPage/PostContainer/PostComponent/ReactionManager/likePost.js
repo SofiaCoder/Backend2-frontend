@@ -13,6 +13,4 @@ export async function likePost(postID){
     },
     body
   });
-
-  console.log(response.status);
 }
