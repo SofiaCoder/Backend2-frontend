@@ -1,0 +1,6 @@
+.userContainer {
+  margin-top: 25vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
