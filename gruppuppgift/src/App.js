@@ -3,6 +3,7 @@ import "./App.css";
 import LoginForm from "./LoginForm";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { MainPage } from "./pages/MainPage/MainPage";
+import { ProfilePage } from "./pages/ProfilePage/ProfilePage";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -29,6 +30,7 @@ function App() {
           path="/MainPage"
           element={<MainPage/>}
         />
+        <Route path="profile/:username" element={<ProfilePage/>}/>
       </Routes>
     </BrowserRouter>
   );
