@@ -1,3 +1,6 @@
 nav {
   display: flex;
+  width: 50%;
+  margin: auto;
+  justify-content: space-between;
 }
