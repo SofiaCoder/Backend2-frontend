@@ -1,3 +1,4 @@
+import { deletePost } from "./deletePost";
 import "./postManager.css";
 
 export function PostManager({ isEditable, setIsEditable, posts, setPosts, postId, postText }) {
@@ -9,8 +10,9 @@ export function PostManager({ isEditable, setIsEditable, posts, setPosts, postId
         setIsEditable(true);
     }
 
-    function handleDelete() {
-        // Fetch to remove by id
+    async function handleDelete() {
+        await deletePost(postId);
+
         const clonedPosts = structuredClone(posts);
         const removalIndex = clonedPosts.findIndex((post) => post._id === postId);
         clonedPosts.splice(removalIndex, 1);
