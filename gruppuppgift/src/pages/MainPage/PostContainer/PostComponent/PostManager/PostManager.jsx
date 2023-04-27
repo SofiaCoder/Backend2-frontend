@@ -1,22 +1,26 @@
-export function PostManager({isEditable, setIsEditable, posts, setPosts, postId}){
-  function handleSave() {
-    setIsEditable(false);
-  }
+import "./postManager.css";
 
-  function handleEdit() {
-    setIsEditable(true)
-  }
+export function PostManager({ isEditable, setIsEditable, posts, setPosts, postId, postText }) {
+    function handleSave() {
+        setIsEditable(false);
+    }
 
-  function handleDelete(){
-    // Fetch to remove by id
-    const clonedPosts = structuredClone(posts);
-    const removalIndex = clonedPosts.findIndex(post => post._id === postId);
-    clonedPosts.splice(removalIndex, 1);
-    setPosts(clonedPosts);
-  }
-  return <div>
-    {isEditable ? <p onClick={handleSave}>Save</p> : <p onClick={handleEdit}> Edit</p>}
+    function handleEdit() {
+        setIsEditable(true);
+    }
 
-    <p onClick={handleDelete}>Delete</p>
-  </div>
+    function handleDelete() {
+        // Fetch to remove by id
+        const clonedPosts = structuredClone(posts);
+        const removalIndex = clonedPosts.findIndex((post) => post._id === postId);
+        clonedPosts.splice(removalIndex, 1);
+        setPosts(clonedPosts);
+    }
+    return (
+        <div className="postManager">
+            {isEditable ? <span onClick={handleSave}>Save</span> : <span onClick={handleEdit}> Edit</span>}
+
+            <span onClick={handleDelete}>Delete</span>
+        </div>
+    );
 }

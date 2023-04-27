@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { PostContainer } from "./PostContainer/PostContainer";
 import { UserSearch } from "./UserSearch/UserSearch";
 

@@ -6,7 +6,6 @@ export function UserSearch(){
 
   function handleSearch(event){
     event.preventDefault();
-    console.log(searchValue)
   }
   return <form onSubmit={handleSearch}>
     <label htmlFor="userSearch">Search for user</label>

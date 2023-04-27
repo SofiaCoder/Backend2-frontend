@@ -38,9 +38,8 @@ function LoginForm({ onLogin }) {
     });
     if (response.ok) {
       const data = await response.json();
-      console.log(data);
       onLogin(); // Set isLoggedIn to true in the parent component
-      navigate("/myflowpage"); // Navigate to MyFlowpage after successful login
+      navigate("/mainpage"); // Navigate to MyFlowpage after successful login
     } else {
       setErrorMessage("Kunde inte skapa användare");
     }
