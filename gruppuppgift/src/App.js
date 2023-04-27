@@ -4,6 +4,7 @@ import LoginForm from "./LoginForm";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { MainPage } from "./pages/MainPage/MainPage";
 import { ProfilePage } from "./pages/ProfilePage/ProfilePage";
+import { UserPage } from "./pages/UserPage/UserPage";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -30,7 +31,8 @@ function App() {
           path="/MainPage"
           element={<MainPage/>}
         />
-        <Route path="profile/:username" element={<ProfilePage/>}/>
+        <Route path="/profile/:username" element={<ProfilePage/>}/>
+        <Route path="/userpage" element={<UserPage/>}/>
       </Routes>
     </BrowserRouter>
   );
