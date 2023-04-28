@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import "./App.css";
 import LoginForm from "./LoginForm";
-import MyFlowPage from "./MyFlowPage";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { MainPage } from "./pages/MainPage/MainPage";
+import { ProfilePage } from "./pages/ProfilePage/ProfilePage";
+import { UserPage } from "./pages/UserPage/UserPage";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -19,16 +21,18 @@ function App() {
           path="/"
           element={
             isLoggedIn ? (
-              <Navigate to="/MyFlowPage" />
+              <Navigate to="/MainPage" />
             ) : (
               <LoginForm onLogin={handleLogin} />
             )
           }
         />
         <Route
-          path="/MyFlowPage"
-          element={<MyFlowPage isLoggedIn={isLoggedIn} />}
+          path="/MainPage"
+          element={<MainPage/>}
         />
+        <Route path="/profile/:username" element={<ProfilePage/>}/>
+        <Route path="/userpage" element={<UserPage/>}/>
       </Routes>
     </BrowserRouter>
   );
