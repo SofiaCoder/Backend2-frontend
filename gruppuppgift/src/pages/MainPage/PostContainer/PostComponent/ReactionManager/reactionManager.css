@@ -1,4 +1,22 @@
 .reactionManager {
   display: flex;
+  flex-direction: column;
   gap: 1em;
+}
+
+.reactionContainer {
+  display: flex;
+  gap: 1em
+}
+
+.commentContainer {
+  border: dotted 1px black;
+  background-color:rgb(243, 243, 243);
+  width: 80vw;
+  margin-left: 1em;
+  padding: 1em;
+}
+
+.commentContainer div {
+  border-bottom: solid 1px black;
 }
