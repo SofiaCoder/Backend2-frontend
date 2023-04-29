@@ -17,20 +17,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route
-          path="/"
-          element={
-            isLoggedIn ? (
-              <Navigate to="/MainPage" />
-            ) : (
-              <LoginForm onLogin={handleLogin} />
-            )
-          }
-        />
-        <Route
-          path="/MainPage"
-          element={<MainPage/>}
-        />
+        <Route path="/" element={isLoggedIn ? (<Navigate to="/MainPage" />) : (<LoginForm onLogin={handleLogin} />)}/>
+        <Route path="/MainPage" element={<MainPage/>}/>
         <Route path="/profile/:username" element={<ProfilePage/>}/>
         <Route path="/userpage" element={<UserPage/>}/>
       </Routes>
