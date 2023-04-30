@@ -13,9 +13,8 @@ export function ReactionManager({post, posts, setPosts}) {
 
   useEffect(() => {
     setAllComments(comments)
-  }, [])
+  }, [comments])
  
-
   const hasLiked = likes.includes(loggedinUser);
 
   const postId = post._id;
@@ -39,14 +38,15 @@ export function ReactionManager({post, posts, setPosts}) {
   }
 
   async function handleComment(){
-    const respons = await commentPost(comment, postId);
-    const newComment = await respons.json();
+    await commentPost(comment, postId);
 
-    const indexOfPost = posts.findIndex((element) => element._id === postId);
-    const clonedPosts = structuredClone(posts);
-    const comments = clonedPosts[indexOfPost].comments;
-    comments.push(newComment);
-    setPosts(clonedPosts);
+    //const newComment = await respons.json();
+
+    // const indexOfPost = posts.findIndex((element) => element._id === postId);
+    // const clonedPosts = structuredClone(posts);
+    // const comments = clonedPosts[indexOfPost].comments;
+    // comments.push(newComment);
+    // setPosts(clonedPosts);
 }
 
 
