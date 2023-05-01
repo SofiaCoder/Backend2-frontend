@@ -1,4 +1,18 @@
 .postManager {
   display: flex;
-  gap: 1em;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.postManager span {
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: #007bff;
+  text-transform: uppercase;
+}
+
+.postManager span:hover {
+  text-decoration: underline;
 }
