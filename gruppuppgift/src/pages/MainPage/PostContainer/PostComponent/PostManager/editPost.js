@@ -4,6 +4,7 @@ export async function editPost({ postId, postText }) {
   try {
     const response = await fetch(`${serverUrl}/post`, {
       method: "PATCH",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },
