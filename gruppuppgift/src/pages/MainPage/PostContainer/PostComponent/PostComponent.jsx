@@ -17,7 +17,6 @@ export function PostComponent({ post, posts, setPosts }) {
                 {postText}
             </p>
             <p className="postDate">{post.date}</p>
-            <ReactionManager post={post} posts={posts} setPosts={setPosts}/>
             {isOwner && (
                 <PostManager
                     isEditable={isEditable}
@@ -28,6 +27,7 @@ export function PostComponent({ post, posts, setPosts }) {
                     postText={postText}
                 />
             )}
+            <ReactionManager post={post} posts={posts} setPosts={setPosts}/>
         </div>
     );
 }

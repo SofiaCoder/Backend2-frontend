@@ -7,5 +7,5 @@ export async function getUser(username){
 
   const user = await response.json();
 
-  return user;
+  return [user, response.status];
 }
