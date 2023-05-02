@@ -38,15 +38,16 @@ export function ReactionManager({post, posts, setPosts}) {
   }
 
   async function handleComment(){
-    await commentPost(comment, postId);
+    const respons = await commentPost(comment, postId);
 
-    //const newComment = await respons.json();
+    const newComment = await respons.json();
 
-    // const indexOfPost = posts.findIndex((element) => element._id === postId);
-    // const clonedPosts = structuredClone(posts);
-    // const comments = clonedPosts[indexOfPost].comments;
-    // comments.push(newComment);
-    // setPosts(clonedPosts);
+    const indexOfPost = posts.findIndex((element) => element._id === postId);
+    const clonedPosts = structuredClone(posts);
+    const comments = clonedPosts[indexOfPost].comments;
+    comments.push(newComment);
+    setPosts(clonedPosts);
+    setComment('');
 }
 
 
