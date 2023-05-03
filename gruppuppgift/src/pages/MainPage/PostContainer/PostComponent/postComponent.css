@@ -1,12 +1,63 @@
 .postComponent {
-  border: 1px dotted black;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
 }
 
-.postUsername{
+.postUsername {
   font-weight: bold;
 }
 
-.postDate{
-  font-style: italic;
-  font-size: 0.75 ;
+.postPost {
+  margin: 10px 0;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  min-height: 50px;
+}
+
+.postPost:focus {
+  outline: none;
+  border: 1px solid #0077ff;
+}
+
+.postDate {
+  color: #666;
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+.postManagerBtn {
+  background-color: #0077ff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.postManagerBtn:hover {
+  background-color: #005ae6;
+}
+
+.deleteBtn {
+  background-color: #ff4d4d;
+  color: #fff;
+}
+
+.deleteBtn:hover {
+  background-color: #e60000;
+}
+
+.reactionBtn {
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.reactionBtn:hover {
+  text-decoration: underline;
 }
