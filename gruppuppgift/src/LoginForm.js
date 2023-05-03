@@ -19,7 +19,7 @@ function LoginForm({ onLogin }) {
       body: JSON.stringify({ username, password }),
     });
     if (response.ok) {
-      localStorage.setItem('loggedinUser', username.toLowerCase());
+      localStorage.setItem("loggedinUser", username.toLowerCase());
       onLogin(); // Set isLoggedIn to true in the parent component
       // navigate("/myflowpage"); // Navigate to MyFlowpage after successful login
     } else {
