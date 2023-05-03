@@ -14,7 +14,8 @@ export function ProfilePage() {
 
   useEffect(() => {
     async function getAndSetUser() {
-      const { posts } = await getUser(username);
+      const result = await getUser(username);
+      const posts = result[0].posts
       setPosts(posts || []);
     }
     getAndSetUser();
