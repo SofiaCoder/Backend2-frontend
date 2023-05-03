@@ -12,7 +12,7 @@ export function PostManager({
 }) {
   async function handleSave() {
     setIsEditable(false);
-    await editPost(postId, postText);
+    await editPost({ postId, postText });
   }
 
   function handleEdit() {
